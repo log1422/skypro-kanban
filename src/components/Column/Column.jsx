@@ -1,15 +1,24 @@
-import {Card} from "../Card/Card.jsx";
+import Card from "../Card/Card.jsx";
+import {CardsColumn, ColumnParagraph, ColumnTitle, MainColumn} from "./Column.styled";
 
 
-export const Column = ({title}) => {
-  return (
-    <div className="main__column">
-      <div className="column__title">
-        <p>{title}</p>
-      </div>
-      <div className="cards">
-        {cards.map(el => <Card title={el.title} key={el.id} topic={el.topic} date={el.date} />)}
-      </div>
-    </div>
+const Column = ({title, cardList}) => {
+  return (<MainColumn>
+      <ColumnTitle>
+        <ColumnParagraph>{title}</ColumnParagraph>
+      </ColumnTitle>
+      <CardsColumn>
+        {cardList.map(({ id, topic, title, date }) => (
+          <Card key={id}
+                cardId={id}
+                topic={topic}
+                title={title}
+                date={date}
+          />
+        ))}
+      </CardsColumn>
+    </MainColumn>
   )
 }
+
+export default Column

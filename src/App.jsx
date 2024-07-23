@@ -1,10 +1,10 @@
-import {useEffect, useState} from 'react'
-import './App.css'
-import {Header} from "./components/Header/Header.jsx";
-import {Main} from "./components/Main/Main.jsx";
-import {PopNewCard} from "./components/Popups/PopNewCard/PopNewCard.jsx";
-import {PopBrowse} from "./components/Popups/PopBrowse/PopBrowse.jsx";
-import {PopUser} from "./components/Popups/PopUser/PopUser.jsx";
+import {useEffect, useState} from "react";
+import "./App.css";
+import {GlobalStyle} from "./Global.styled";
+import Header from "./components/Header/Header.jsx";
+import Main from "./components/Main/Main.jsx";
+import PopNewCard from "./components/Popups/PopNewCard/PopNewCard.jsx";
+import PopBrowse from "./components/Popups/PopBrowse/PopBrowse.jsx";
 import {tasks} from "./data.js";
 
 
@@ -34,7 +34,7 @@ function App() {
 
   return (
     <div className="wrapper">
-      <PopUser/>
+      <GlobalStyle/>
       <PopNewCard/>
       <PopBrowse/>
       <Header addCard={addCard}/>

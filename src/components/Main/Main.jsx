@@ -1,23 +1,48 @@
-import {Column} from "../Column/Column.jsx";
+import Column from "../Column/Column.jsx";
+import {useEffect, useState} from "react";
+import Loader from "../Loader/Loader";
+import {MainBlock, MainContent, MainStyleTotal} from "./Main.styled"
+import {Container} from "../Shared.styled.js";
 
 
-export const Main = ({cards, isLoading}) => {
+const statusList = [
+  "Без статуса",
+  "Нужно сделать",
+  "В работе",
+  "Тестирование",
+  "Готово",
+];
+
+const Main = ({cards, errorMesg}) => {
+  const [isLoading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false)
+    }, 2000)
+  }, []);
+
   return (
-    <main className="main">
-      <div className="container">
-
-        <div className="main__block">
-          {isLoading ? 'Loading...' : (
-            <div className="main__content">
-              <Column title={'Без статуса'} cards={cards.filter(el => el.status === 'Без статуса')}/>
-              <Column title={'Нужно сделать'} cards={cards.filter(el => el.status === 'Нужно сделать')}/>
-              <Column title={'В работе'} cards={cards.filter(el => el.status === 'В работе')}/>
-              <Column title={'Тестирование'} cards={cards.filter(el => el.status === 'Тестирование')}/>
-              <Column title={'Готово'} cards={cards.filter(el => el.status === 'Готово')}/>
-            </div>
-          )}
-        </div>
-      </div>
-    </main>
+    <MainStyleTotal>
+      <Container>
+        <MainBlock>
+          <MainContent>
+            {errorMesg ? <p>{errorMesg}</p> :(
+              isLoading
+                ? <Loader/>
+                : statusList.map((status) => (
+                  <Column
+                    key={status}
+                    title={status}
+                    cardList={cards.filter(card => card.status === status)}
+                  />
+                ))
+            )}
+          </MainContent>
+        </MainBlock>
+      </Container>
+    </MainStyleTotal>
   )
 }
+
+export default Main
