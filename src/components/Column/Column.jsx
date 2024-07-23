@@ -8,10 +8,7 @@ export const Column = ({title}) => {
         <p>{title}</p>
       </div>
       <div className="cards">
-        <Card name={'Web Design'} color={'_orange'}/>
-        <Card name={'Research'} color={'_green'}/>
-        <Card name={'Copywriting'} color={'_purple'}/>
-        <Card name={'Web Design'} color={'_orange'}/>
+        {cards.map(el => <Card title={el.title} key={el.id} topic={el.topic} date={el.date} />)}
       </div>
     </div>
   )
