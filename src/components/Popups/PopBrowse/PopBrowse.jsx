@@ -1,7 +1,7 @@
-import {Calendar} from "../../Calendar/Calendar.jsx";
+import Calendar from "../../Calendar/Calendar.jsx";
 
 
-export const PopBrowse = () => {
+const PopBrowse = () => {
   return (
     <div className="pop-browse" id="popBrowse">
       <div className="pop-browse__container">
@@ -16,20 +16,8 @@ export const PopBrowse = () => {
             <div className="pop-browse__status status">
               <p className="status__p subttl">Статус</p>
               <div className="status__themes">
-                <div className="status__theme _hide">
-                  <p>Без статуса</p>
-                </div>
                 <div className="status__theme _gray">
                   <p className="_gray">Нужно сделать</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>В работе</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Тестирование</p>
-                </div>
-                <div className="status__theme _hide">
-                  <p>Готово</p>
                 </div>
               </div>
             </div>
@@ -37,10 +25,11 @@ export const PopBrowse = () => {
               <form className="pop-browse__form form-browse" id="formBrowseCard" action="#">
                 <div className="form-browse__block">
                   <label htmlFor="textArea01" className="subttl">Описание задачи</label>
-                  <textarea className="form-browse__area" name="text" id="textArea01"  readOnly placeholder="Введите описание задачи..."></textarea>
+                  <textarea className="form-browse__area" name="text" id="textArea01" readOnly
+                            placeholder="Введите описание задачи..." />
                 </div>
               </form>
-              <Calendar/>
+              <Calendar date={new Date()} />
             </div>
             <div className="theme-down__categories theme-down">
               <p className="categories__p subttl">Категория</p>
@@ -63,10 +52,11 @@ export const PopBrowse = () => {
               </div>
               <button className="btn-edit__close _btn-bg _hover01"><a href="#">Закрыть</a></button>
             </div>
-
           </div>
         </div>
       </div>
     </div>
   )
 }
+
+export default PopBrowse
